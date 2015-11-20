@@ -161,4 +161,9 @@ class CreateJokesTable extends Migration
 }
 ```
 
+Now run the following commands.
+
+    php artisan migrate
+
+
 

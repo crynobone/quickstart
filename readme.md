@@ -34,3 +34,27 @@ Once `orchestra/lumen` is installed, you can run the following command to insert
 
     lumenate make
 
+Next, we need to update `composer.json` to include new autoload directories.
+
+```json
+    "autoload": {
+        "classmap": [
+            "resources/database"
+        ],
+        "psr-4": {
+            "App\\Lumen": "lumen/",
+            "App\\": "app/"
+        }
+    },
+    "autoload-dev": {
+        "classmap": [
+            "lumen/tests/LumenTestCase.php",
+            "tests/TestCase.php"
+        ]
+    },
+```
+
+Don't forget to run `dump-autoload` to include the new paths.
+
+    composer dump-autoload
+

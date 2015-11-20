@@ -21,11 +21,13 @@
             "resources/database"
         ],
         "psr-4": {
+            "App\\Lumen": "lumen/",
             "App\\": "app/"
         }
     },
     "autoload-dev": {
         "classmap": [
+            "lumen/tests/LumenTestCase.php",
             "tests/TestCase.php"
         ]
     },

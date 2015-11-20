@@ -25,7 +25,7 @@ After successfully creating the project, make sure your webserver is running (we
 
     php artisan serve
 
-Now you can open the following url <http://localhost:8000>, and you will see the Laravel front page.
+Now you can open the following url <http://localhost:8000>, and you will see the Orchestra Platform front page.
 
 ### Install Studio
 
@@ -81,7 +81,11 @@ Don't forget to run `dump-autoload` to include the new paths.
 
     composer dump-autoload
 
+To test if Lumen was successfully installed, run the following command:
 
+    php lumen/artisan serve
+
+Now you can open the following url <http://localhost:8000>, and you will see the Lumen front page.
 
 ## Setup DB, Create Migration & Insert Dummy Data
 

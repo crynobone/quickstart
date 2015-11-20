@@ -4,7 +4,7 @@
 
 * [Install Orchestra Platform & Create New Project](#install-orchestra-platform--create-new-project)
     - [Install Lumen](#install-lumen)
-*
+* Setup DB, Create Migration & Insert Dummy Data
 
 ## Install Orchestra Platform & Create New Project
 
@@ -75,4 +75,22 @@ Next, we need to update `composer.json` to include new autoload directories.
 Don't forget to run `dump-autoload` to include the new paths.
 
     composer dump-autoload
+
+## Setup DB, Create Migration & Insert Dummy Data
+
+### Setup DB
+
+now open the `.env` file and change the following:-
+
+```
+DB_HOST=localhost
+DB_DATABASE=ovue    # Your Database Name
+DB_USERNAME=root    # Your Database Username
+DB_PASSWORD=root    # Your Database Password
+```
+
+Now let's run `php artisan serve` and setup administrator account for this project from <http://localhost:8000/admin/install>.
+
+![Installation](screenshots/installation.png)
+
 

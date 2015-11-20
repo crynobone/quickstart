@@ -7,7 +7,8 @@
     - [Install Lumen](#install-lumen)
 * [Setup DB, Create Migration & Insert Dummy Data](#setup-db-create-migration--insert-dummy-data)
     - [Setup DB](#setup-db)
-    - [Setup Migration](#setup-migration)
+    - [Create Migration](#create-migration)
+    - [Insert Dummy Data](#insert-dummy-data)
 
 ## Install Orchestra Platform & Create New Project
 
@@ -302,3 +303,42 @@ Now the last step is to run the db seed command as.
     php artisan db:seed
 
 After that you can see the database table with all the dummy entries.
+
+## Creating & Testing Routes
+
+In the last section we successfully created the database, created migration and prepared seeder classes. In this section we will create our backend routes which we can hit to get data.
+
+Let's create `app/Http/backend.php` route file and add the following code:
+
+```php
+<?php
+
+$router->resource('tasks', 'TasksController');
+```
+
+In order for Orchestra Platform to load `backend.php`, let's open up `app/Providers/RouteServiceProvider.php` and edit the following code:
+
+```php
+    /**
+     * Define the routes for the application.
+     *
+     * @param  \Illuminate\Routing\Router  $router
+     *
+     * @return void
+     */
+    public function map(Router $router)
+    {
+        $this->loadFrontendRoutesFrom(app_path('Http/routes.php'));
+        $this->loadBackendRoutesFrom(app_path('Http/backend.php'), "{$this->namespace}\\Admin");
+    }
+```
+
+Now we need to create the `TasksController`, for this we will use generators:
+
+    php artisan make:controller Admin/TasksController
+
+This command will create the `TasksController` with all the required methods. Now run this command and see the output.
+
+    php artisan route:list --path=tasks
+
+![Route List for Tasks](screenshots/route-list-tasks.png)

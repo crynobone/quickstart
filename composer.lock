@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "b8d8ad5ae169f4337f44cc4b93823661",
-    "content-hash": "2208cadbbcf36c08843e746be923cec1",
+    "hash": "1ce4279279e75d6f49ff43aaa2e22f16",
+    "content-hash": "333e0085cd6478c82536585735841940",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -807,6 +807,49 @@
             "time": "2015-11-04 20:07:17"
         },
         {
+            "name": "nikic/fast-route",
+            "version": "v0.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nikic/FastRoute.git",
+                "reference": "f26a8f7788f25c0e3e9b1579d38d7ccab2755320"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nikic/FastRoute/zipball/f26a8f7788f25c0e3e9b1579d38d7ccab2755320",
+                "reference": "f26a8f7788f25c0e3e9b1579d38d7ccab2755320",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "FastRoute\\": "src/"
+                },
+                "files": [
+                    "src/functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Nikita Popov",
+                    "email": "nikic@php.net"
+                }
+            ],
+            "description": "Fast request router for PHP",
+            "keywords": [
+                "router",
+                "routing"
+            ],
+            "time": "2015-02-26 15:33:07"
+        },
+        {
             "name": "nikic/php-parser",
             "version": "v1.4.1",
             "source": {
@@ -1416,6 +1459,78 @@
                 "orchestral"
             ],
             "time": "2015-11-18 09:59:06"
+        },
+        {
+            "name": "orchestra/lumen",
+            "version": "v3.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/orchestral/lumen.git",
+                "reference": "370172d0642a87c035223514989c626d57f345ae"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/orchestral/lumen/zipball/370172d0642a87c035223514989c626d57f345ae",
+                "reference": "370172d0642a87c035223514989c626d57f345ae",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "5.1.*",
+                "nikic/fast-route": "0.4.*",
+                "orchestra/auth": "~3.1.0",
+                "orchestra/config": "~3.1.0",
+                "orchestra/memory": "~3.1.0",
+                "orchestra/support": "~3.1.0",
+                "orchestra/translation": "~3.1.0",
+                "orchestra/view": "~3.1.0",
+                "php": ">=5.5.9",
+                "symfony/security-core": "2.7.*"
+            },
+            "require-dev": {
+                "dingo/api": "~1.0",
+                "mockery/mockery": "^0.9.1"
+            },
+            "suggest": {
+                "dingo/api": "Better API routing support (~1.0)",
+                "vlucas/phpdotenv": "Required to use .env files (~1.0)."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.2-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Laravel\\Lumen\\": "src/"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylorotwell@gmail.com"
+                },
+                {
+                    "name": "Mior Muhammad Zaki",
+                    "email": "crynobone@gmail.com"
+                }
+            ],
+            "description": "Lumen Framework for Orchestra Platform",
+            "keywords": [
+                "framework",
+                "laravel",
+                "lumen",
+                "orchestra-platform",
+                "orchestral"
+            ],
+            "time": "2015-10-27 14:13:02"
         },
         {
             "name": "orchestra/memory",
@@ -2842,6 +2957,68 @@
                 "url"
             ],
             "time": "2015-10-27 15:38:06"
+        },
+        {
+            "name": "symfony/security-core",
+            "version": "v2.7.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/security-core.git",
+                "reference": "677af9aa5a497f768bf23ba84a466be060dc7509"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/security-core/zipball/677af9aa5a497f768bf23ba84a466be060dc7509",
+                "reference": "677af9aa5a497f768bf23ba84a466be060dc7509",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.9"
+            },
+            "require-dev": {
+                "ircmaxell/password-compat": "1.0.*",
+                "psr/log": "~1.0",
+                "symfony/event-dispatcher": "~2.1",
+                "symfony/expression-language": "~2.6",
+                "symfony/http-foundation": "~2.4",
+                "symfony/translation": "~2.0,>=2.0.5",
+                "symfony/validator": "~2.5,>=2.5.5"
+            },
+            "suggest": {
+                "ircmaxell/password-compat": "For using the BCrypt password encoder in PHP <5.5",
+                "symfony/event-dispatcher": "",
+                "symfony/expression-language": "For using the expression voter",
+                "symfony/http-foundation": "",
+                "symfony/validator": "For using the user password constraint"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.7-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Security\\Core\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Security Component - Core Library",
+            "homepage": "https://symfony.com",
+            "time": "2015-10-11 09:39:48"
         },
         {
             "name": "symfony/translation",

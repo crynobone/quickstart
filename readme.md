@@ -66,7 +66,7 @@ Next, we need to update `composer.json` to include new autoload directories.
             "resources/database"
         ],
         "psr-4": {
-            "App\\Lumen\\": "lumen/",
+            "App\\Lumen\\": "lumen/app/",
             "App\\": "app/"
         }
     },

@@ -107,9 +107,9 @@ Now let's run `php artisan serve` and setup administrator account for this proje
 
 Next step is to create the migration, as the laravel documentation says, Migrations are like version control for your database, allowing a team to easily modify and share the application’s database schema. Open the terminal and type the following command to create the model and (migration).
 
-    php artisan make:model Joke -m
+    php artisan make:model Task -m
 
-The model will be generated under `app/Joke.php`.
+The model will be generated under `app/Task.php`.
 
 ```php
 <?php 
@@ -118,7 +118,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Joke extends Model
+class Task extends Model
 {
     //
 }
@@ -132,7 +132,7 @@ You can see the created migration in `resources/database/migrations` folder. Ope
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateJokesTable extends Migration
+class CreateTasksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -165,5 +165,5 @@ Now run the following commands.
 
     php artisan migrate
 
-
+![Base Schema](screenshots/base-schema.png)
 

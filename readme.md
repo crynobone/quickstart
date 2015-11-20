@@ -138,10 +138,10 @@ class CreateTasksTable extends Migration
      */
     public function up()
     {
-        Schema::create('jokes', function (Blueprint $table) {
+        Schema::create('tasks', function (Blueprint $table) {
             $table->increments('id');
-            $table->text('joke');
-            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('user_id')->index();
+            $table->string('name');
             $table->timestamps();
         });
     }
@@ -153,7 +153,7 @@ class CreateTasksTable extends Migration
      */
     public function down()
     {
-        Schema::drop('jokes');
+        Schema::drop('tasks');
     }
 }
 ```

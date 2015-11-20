@@ -145,7 +145,7 @@ class CreateTasksTable extends Migration
         Schema::create('tasks', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id')->index();
-            $table->string('name');
+            $table->string('body');
             $table->timestamps();
         });
     }
@@ -162,9 +162,143 @@ class CreateTasksTable extends Migration
 }
 ```
 
+Here you can see we have added the `id`, `name`, `user_id` and `timestamps` fields. Where id is auto incrementing, `body` is the body of the task and `user_id` will be used for the user who will submit the task. Here there are two functions one is up and other is down. The down function is the exact opposite of the up and will be used if we want to revert back the migration.
+
 Now run the following commands.
 
     php artisan migrate
 
-![Base Schema](screenshots/base-schema.png)
+Now have a look at the database, you can see the new `tasks` table there. Along with `tasks` table, Orchestra Platform creates eight other migrations.
 
+![Base Migrations](screenshots/base-schema.png)
+
+Now to demonstrate the down function. Let’s say we want to change the `body` field with `name`. What you can do is, change the field in the migration table.
+
+```php
+    public function up()
+    {
+        Schema::create('tasks', function (Blueprint $table) {
+            $table->increments('id');
+            $table->unsignedInteger('user_id')->index();
+            $table->string('name');
+            $table->timestamps();
+        });
+    }
+```
+
+Now run the following commands.
+
+    php artisan migrate:rollback
+    php artisan migrate
+
+Now open the database and check the structure and you can see the `tasks` table `body` field renamed to `name`.
+
+### Insert Dummy Data
+
+The next step is to insert the dummy data that we can use throughout the  development process. For inserting dummy data we will use a package called [fzaninotto/faker](https://github.com/fzaninotto/Faker).
+
+First we need to install this package:
+
+    composer require "fzaninotto/faker=~1.5"
+
+Now create the seed file which will be used to insert dummy data.
+
+    php artisan make:seed TasksTableSeeder
+
+You can see the created seeder file in `resources/database/seeds` folder. Open `TasksTableSeeder.php` and add the following.
+
+```php
+<?php
+
+use App\Task;
+use Illuminate\Database\Seeder;
+
+class TasksTableSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        $faker = Faker\Factory::create();
+
+        foreach (range(1, 30) as $index) {
+            $now = Carbon\Carbon::now();
+
+            Task::create([
+                'name' => $faker->sentence(6),
+                'user_id' => $faker->numberBetween(1, 5),
+                'created_at' => $now,
+                'updated_at' => $now,
+            ]);
+        }
+
+    }
+}
+```
+
+At the top you can see, we have added `App\Task` that makes us available the tasks model and we are using to create new tasks as `Task::create`. Here you can see we have used `$faker` object, it is availabe through package. For the list of all the available functions, you can have a look at their [documentation](https://github.com/fzaninotto/Faker#installation).
+
+Now Create the new seed file for users table as.
+
+    php artisan make:seed UsersTableSeeder
+
+Now open `UsersTableSeeder.php` and add the following.
+
+```php
+<?php
+
+use App\User;
+use Illuminate\Database\Seeder;
+
+class UsersTableSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        $faker = Faker\Factory::create();
+        $role = Orchestra\Model\Role::member();
+
+        foreach (range(1, 4) as $index) {
+            $now = Carbon\Carbon::now();
+            $user = User::create([
+                'fullname' => $faker->name(),
+                'email' => $faker->email,
+                'password' => bcrypt('secret'),
+                'created_at' => $now,
+                'updated_at' => $now,
+            ]);
+
+            $user->attachRole($role->id);
+            $user->save();
+        }
+    }
+}
+
+```
+
+The next step is to open `DatabaseSeeder.php` and add the created seeder class.
+
+```php
+    /**
+     * List of seeders.
+     *
+     * @var array
+     */
+    protected $seeders = [
+        TasksTableSeeder::class,
+        UsersTableSeeder::class,
+    ];
+```
+
+Now the last step is to run the db seed command as.
+
+    php artisan db:seed
+
+After that you can see the database table with all the dummy entries.

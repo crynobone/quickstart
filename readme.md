@@ -5,7 +5,6 @@
 * [Install Orchestra Platform & Create New Project](#install-orchestra-platform--create-new-project)
     - [Install Studio](#install-studio)
     - [Install Lumen](#install-lumen)
-    - [Install Dingo & JWT-Auth](#install-dingo--jwt-auth)
 * [Setup DB, Create Migration & Insert Dummy Data](#setup-db-create-migration--insert-dummy-data)
     - [Setup DB](#setup-db)
     - [Setup Migration](#setup-migration)
@@ -81,8 +80,6 @@ Next, we need to update `composer.json` to include new autoload directories.
 Don't forget to run `dump-autoload` to include the new paths.
 
     composer dump-autoload
-
-### Install Dingo & JWT-Auth
 
 
 

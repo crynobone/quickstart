@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "1ce4279279e75d6f49ff43aaa2e22f16",
-    "content-hash": "333e0085cd6478c82536585735841940",
+    "hash": "b4de846853180ba02fb80e55f7047d6f",
+    "content-hash": "d989e25cf4a4679780672556cbe9cfef",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -3446,6 +3446,58 @@
                 "testing"
             ],
             "time": "2015-04-02 19:54:00"
+        },
+        {
+            "name": "orchestra/studio",
+            "version": "v3.1.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/orchestral/studio.git",
+                "reference": "9ca3302884a8c8a7298d7ef27709b4dacff979c4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/orchestral/studio/zipball/9ca3302884a8c8a7298d7ef27709b4dacff979c4",
+                "reference": "9ca3302884a8c8a7298d7ef27709b4dacff979c4",
+                "shasum": ""
+            },
+            "require": {
+                "orchestra/support": "~3.1.0",
+                "php": ">=5.5.0"
+            },
+            "require-dev": {
+                "illuminate/console": "~5.1.0",
+                "illuminate/filesystem": "~5.1.0",
+                "league/flysystem": "~1.0",
+                "mockery/mockery": "0.9.*"
+            },
+            "suggest": {
+                "wikimedia/composer-merge-plugin": "Add workbench support for Orchestra Platform (~1.1)."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.2-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Orchestra\\Studio\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mior Muhammad Zaki",
+                    "email": "crynobone@gmail.com",
+                    "homepage": "https://github.com/crynobone"
+                }
+            ],
+            "description": "Code Generator for Orchestra Platform",
+            "time": "2015-10-24 02:15:37"
         },
         {
             "name": "orchestra/testbench",

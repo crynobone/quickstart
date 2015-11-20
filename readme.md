@@ -3,7 +3,7 @@
 ## Table of Content
 
 * [Install Orchestra Platform & Create New Project](#install-orchestra-platform--create-new-project)
-    - Install Lumen
+    - [Install Lumen](#install-lumen)
 *
 
 ## Install Orchestra Platform & Create New Project
@@ -24,6 +24,24 @@ After successfully creating the project, make sure your webserver is running (we
 
 Now you can open the following url <http://localhost:8000>, and you will see the Laravel front page.
 
+Now we will add a package called [Studio](https://github.com/orchestral/studio). This Orchestra Platform package provides a variety of generators to speed up your development process. You can install the package via composer as:
+
+    composer require "orchestra/studio=~3.1" --dev
+
+Now create a new `resources/config/local/app.php` file and include the following:
+
+```php
+<?php 
+
+return [
+    'providers' => append_config([
+        Orchestra\Studio\StudioServiceProvider::class,
+    ]),
+];
+```
+
+Now run `php artisan`. You should see new commands added in the make:* section.
+
 ### Install Lumen
 
 Now, you can also setup Lumen for Orchestra Platform by running the following command.
@@ -42,7 +60,7 @@ Next, we need to update `composer.json` to include new autoload directories.
             "resources/database"
         ],
         "psr-4": {
-            "App\\Lumen": "lumen/",
+            "App\\Lumen\\": "lumen/",
             "App\\": "app/"
         }
     },

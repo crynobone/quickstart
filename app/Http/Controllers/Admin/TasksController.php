@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Table;
+use App\Task;
 use Illuminate\Http\Request;
-
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 class TasksController extends Controller
@@ -16,7 +16,18 @@ class TasksController extends Controller
      */
     public function index()
     {
-        //
+        $table = Table::make(function ($table) {
+            $table->with(Task::with('user'))->paginated();
+            $table->searchable(['name', 'user.email']);
+            $table->column('name');
+            $table->column('created_by')
+                ->label('Created By')
+                ->value(function ($task) {
+                    return $task->user->fullname;
+                });
+        });
+
+        return $table;
     }
 
     /**
